@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@400;500&family=Host+Grotesk:wght@400;500&display=swap">
 <style>
 :root{--mbg:var(--teja);--mtx:var(--tinta);--mln:rgba(31,27,45,.12);--mac:var(--fuego);
-  --papel:#F5EEDF;--lino:#ECE4D3;--teja:#F2D8C6;--tinta:#1F1B2D;--tinta-2:rgba(31,27,45,.66);--tinta-3:rgba(31,27,45,.42);--linea:rgba(31,27,45,.12);
+  --papel:#F5EEDF;--lino:#ECE4D3;--teja:#ECC6AC;--tinta:#1F1B2D;--tinta-2:rgba(31,27,45,.66);--tinta-3:rgba(31,27,45,.42);--linea:rgba(31,27,45,.12);
   --oro:#F2B233;--fuego:#E2592A;
   --disp:"Funnel Display","Host Grotesk",system-ui,sans-serif;--text:"Host Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;
   --gut:clamp(16px,4vw,56px);--max:1280px;--hh:76px;--ease:cubic-bezier(.2,.7,.2,1);
