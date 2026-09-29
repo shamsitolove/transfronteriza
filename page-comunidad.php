@@ -121,7 +121,7 @@ h1,h2,h3,h4{font-family:var(--disp);font-weight:500;letter-spacing:-.025em;text-
 #ciudad .globo{z-index:0;max-width:none;width:140%;margin:-6% 0 -34% -26%;animation:deriva 28s ease-in-out infinite alternate}
 #ciudad .globo > img{filter:drop-shadow(0 40px 80px rgba(31,27,45,.2))}
 #ciudad .panel{position:relative;z-index:1;margin-top:clamp(0px,2vw,28px)}
-#ciudad .abre{position:relative;z-index:1}
+#ciudad .abre,#ciudad .ciuM{position:relative;z-index:1}
 @keyframes deriva{from{transform:translate(0,0) rotate(0deg)}to{transform:translate(2.5%,-1.5%) rotate(3deg)}}
 @media (max-width:1000px){#ciudad .globo{width:124%;margin:0 -12% -26%}}
 .globo{position:relative;aspect-ratio:1/1;max-width:640px;width:100%;justify-self:center}
