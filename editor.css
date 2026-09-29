@@ -1,0 +1,41 @@
+/* Editar esta página (solo lo ve quien puede editar) */
+.tfe-abre{position:fixed;z-index:99990;left:18px;bottom:18px;padding:14px 20px;border-radius:999px;background:#F2B233;color:#1F1B2D;box-shadow:0 0 0 3px rgba(31,27,45,.18),0 10px 30px rgba(31,27,45,.3);font:500 14.5px/1 "Host Grotesk",system-ui,sans-serif;box-shadow:0 10px 30px rgba(31,27,45,.3);cursor:pointer;border:0}
+.tfe-abre:hover{background:#E2592A;color:#fff}
+.tfe-barra{position:fixed;z-index:99991;left:12px;right:12px;bottom:12px;display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center;justify-content:space-between;padding:14px 18px;border-radius:12px;background:#1F1B2D;color:#F5EEDF;font:400 14.5px/1.4 "Host Grotesk",system-ui,sans-serif;box-shadow:0 16px 44px rgba(31,27,45,.35)}
+.tfe-barra b{font-weight:500}
+.tfe-barra .tfe-n{color:#F2B233}
+.tfe-barra div{display:flex;gap:8px;flex-wrap:wrap}
+.tfe-barra button{padding:11px 16px;border-radius:999px;border:0;font:500 14px/1 "Host Grotesk",system-ui,sans-serif;cursor:pointer;background:rgba(245,238,223,.12);color:#F5EEDF}
+.tfe-barra .tfe-guarda{background:#F2B233;color:#1F1B2D}
+.tfe-barra .tfe-guarda:disabled{opacity:.45;cursor:default}
+.tfe-capa{position:absolute;inset:0 auto auto 0;width:0;height:0;z-index:99980}
+.tfe-ficha{position:absolute;width:max-content;display:flex;gap:6px;align-items:center;white-space:nowrap;font:500 13px/1 "Host Grotesk",system-ui,sans-serif}
+.tfe-ficha button,.tfe-ficha a{padding:9px 13px;border-radius:999px;border:0;background:#fff;color:#1F1B2D;box-shadow:0 4px 14px rgba(31,27,45,.18);cursor:pointer;text-decoration:none}
+.tfe-ficha a{background:#1F1B2D;color:#F5EEDF}
+.tfe-ficha .tfe-est{padding:9px 12px;border-radius:999px;background:#E2592A;color:#fff}
+.tfe-menu{position:absolute;width:max-content;display:flex;flex-direction:column;gap:4px;padding:6px;border-radius:12px;background:#fff;box-shadow:0 12px 36px rgba(31,27,45,.25);font:500 14px/1 "Host Grotesk",system-ui,sans-serif}
+.tfe-menu button{padding:12px 14px;border-radius:8px;border:0;background:none;color:#1F1B2D;text-align:left;cursor:pointer;white-space:nowrap}
+.tfe-menu button:hover{background:#F5EEDF}
+.tfe-orig{position:absolute;padding:8px 12px;border-radius:999px;border:0;background:#fff;color:#1F1B2D;font:500 13px/1 "Host Grotesk",system-ui,sans-serif;box-shadow:0 4px 14px rgba(31,27,45,.18);cursor:pointer;white-space:nowrap}
+.tfe-aviso{position:fixed;z-index:99995;left:50%;bottom:92px;transform:translateX(-50%);padding:13px 18px;border-radius:999px;background:#1F1B2D;color:#F5EEDF;font:500 14.5px/1 "Host Grotesk",system-ui,sans-serif;box-shadow:0 10px 30px rgba(31,27,45,.3)}
+body.tf-editando [data-tf],body.tf-editando [data-tf-c]{overflow-wrap:normal;word-break:normal;line-break:auto;-webkit-line-break:auto;outline:1.5px dashed rgba(226,89,42,0);outline-offset:4px;border-radius:3px;cursor:text;transition:outline-color .15s}
+body.tf-editando [data-tf]:hover,body.tf-editando [data-tf-c]:hover{outline-color:rgba(226,89,42,.7)}
+body.tf-editando [data-tf]:focus,body.tf-editando [data-tf-c]:focus{outline:2px solid #E2592A}
+body.tf-editando [data-tf-img],body.tf-editando [data-tf-f],body.tf-editando video{cursor:pointer}
+body.tf-editando [data-tf-img]:hover,body.tf-editando [data-tf-f]:hover{outline:3px solid #F2B233;outline-offset:-3px}
+body.tf-editando .tfe-oculta{opacity:.35}
+body.tf-editando{padding-bottom:90px}
+/* la biblioteca de medios, a salvo de los estilos de la web */
+.media-modal button{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+.media-modal h1,.media-modal h2,.media-modal h3{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;letter-spacing:0}
+.media-modal ul{list-style:none}
+@media (max-width:700px){.tfe-barra p{font-size:13.5px}.tfe-ficha{font-size:12px}}
+/* elementos de listas: sus opciones y cómo se ven al quitarlos */
+.tfe-item{position:absolute;display:flex;flex-wrap:nowrap;gap:5px;width:max-content;font:500 13px/1 "Host Grotesk",system-ui,sans-serif;z-index:2}
+.tfe-item a,.tfe-item button{padding:9px 12px;border-radius:999px;border:0;background:#fff;color:#1F1B2D;box-shadow:0 4px 14px rgba(31,27,45,.22);cursor:pointer;text-decoration:none;white-space:nowrap}
+.tfe-item a:first-child{background:#1F1B2D;color:#F5EEDF}
+.tfe-item [data-a=quita]{color:#E2592A}
+body.tf-editando .tfe-quitado{opacity:.28;filter:grayscale(1)}
+/* al editar, las tarjetas se quedan quietas para poder escribir */
+body.tf-editando .pc,body.tf-editando .pw canvas{animation:none!important}
+body.tf-editando .cin,body.tf-editando .pw{transform:none!important}
