@@ -190,17 +190,17 @@ function tf_mecenas_intro() {
 	echo '<h2 data-tf-c="o.mec_titular">' . esc_html(tf_op('mec_titular', 'Talento hay de sobra. Lo que falta es poder llegar.')) . '</h2>';
 	echo '<p class="sub2" data-tf-c="o.mec_texto">' . esc_html(tf_op('mec_texto', 'Muchas jóvenes transfronterizas crecen en hogares humildes, hijas de padres que llegaron con lo justo. Con tu ayuda vienen a los encuentros, hacen comunidad en su ciudad y su voz llega a Futuros.')) . '</p>';
 }
-/* los datos que respaldan la donación, plegables en el móvil */
+/* los datos que respaldan la donación, plegables y cerrados */
 function tf_mecenas_datos() {
 	$porque = (array) (tf_op('mec_porque', []) ?: []);
 	if ($porque) {
-		echo '<details class="porque plega" open><summary><h3>Por qué importa lo que das.</h3></summary><ul>';
+		echo '<details class="porque plega"><summary><h3>Por qué importa lo que das.</h3></summary><ul>';
 		foreach (array_values($porque) as $n => $d) echo '<li><b data-tf-c="o.mec_porque.' . $n . '.numero">' . esc_html($d['numero']) . '</b><p data-tf-c="o.mec_porque.' . $n . '.texto">' . esc_html($d['texto']) . '</p>' . ($d['fuente'] ? '<small data-tf-c="o.mec_porque.' . $n . '.fuente">' . esc_html($d['fuente']) . '</small>' : '') . '</li>';
 		echo '</ul></details>';
 	}
 	$rep = (array) (tf_op('mec_reparto', []) ?: []); $col = ['fuego' => 'var(--fuego)', 'oro' => 'var(--oro)', 'hoja' => '#5E8F4E', 'tinta' => 'var(--tinta)'];
 	if ($rep) {
-		echo '<details class="trans plega" open><summary><h3>Sabes a dónde va cada euro.</h3></summary><div class="bar" aria-hidden="true">'; foreach ($rep as $r) echo '<i style="width:' . (float) $r['porcentaje'] . '%;background:' . ($col[$r['color']] ?? 'var(--oro)') . '"></i>';
+		echo '<details class="trans plega"><summary><h3>Destino de los fondos.</h3></summary><div class="bar" aria-hidden="true">'; foreach ($rep as $r) echo '<i style="width:' . (float) $r['porcentaje'] . '%;background:' . ($col[$r['color']] ?? 'var(--oro)') . '"></i>';
 		echo '</div><ul>'; foreach (array_values($rep) as $n => $r) echo '<li><b><i style="background:' . ($col[$r['color']] ?? 'var(--oro)') . '"></i><span data-tf-c="o.mec_reparto.' . $n . '.porcentaje">' . esc_html($r['porcentaje']) . '</span> %</b><span data-tf-c="o.mec_reparto.' . $n . '.titulo">' . esc_html($r['titulo']) . '</span><small data-tf-c="o.mec_reparto.' . $n . '.texto">' . esc_html($r['texto']) . '</small></li>'; echo '</ul></details>';
 	}
 }

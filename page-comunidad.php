@@ -840,7 +840,6 @@ body.admin-bar .top{top:32px}@media (max-width:782px){body.admin-bar .top{top:46
   $('#cants').addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; cant = +b.dataset.v; $('#otra').value = ''; pintaC(); });
   $('#otra').addEventListener('input', e => { const v = Math.round(+e.target.value); if (v >= 5) { cant = v; pintaC(); } });
   document.addEventListener('click', e => { if (e.target.closest('#saberMas')) $('#saber').showModal(); });
-  if (innerWidth <= 620) document.querySelectorAll('.plega').forEach(d => d.open = false);
   pintaC();
   $('#donarM').addEventListener('click', () => $('#donar').click());
   { let enSec = false, enTarj = false; const pinta = () => $('#barraM').classList.toggle('on', enSec && !enTarj);
