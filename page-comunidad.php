@@ -234,8 +234,8 @@ h1,h2,h3,h4{font-family:var(--disp);font-weight:500;letter-spacing:-.025em;text-
 /* ---------- 9 · manifiesto ---------- */
 .comp{background:var(--papel)}
 .comp .pasos{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(18px,2.4vw,36px)}
-.comp .pasos canvas{display:block;width:100%;aspect-ratio:1/1;border-radius:6px;background:var(--lino)}
-.comp .pasos h3{margin-top:clamp(18px,2vw,26px);font-size:clamp(24px,2.2vw,34px);line-height:1.02;letter-spacing:-.03em}
+.comp .flujo{display:block;width:100vw;margin:clamp(4px,1vw,16px) 0 clamp(28px,3.4vw,52px) calc(50% - 50vw);height:clamp(300px,36vw,540px);cursor:default;touch-action:pan-y}
+.comp .pasos h3{font-size:clamp(24px,2.2vw,34px);line-height:1.02;letter-spacing:-.03em}
 .comp .pasos p{margin-top:12px;color:var(--tinta-2);font-size:16px;line-height:1.55}
 .comp .pasos li:last-child h3{color:var(--fuego)}
 .firma{margin-top:clamp(40px,4.6vw,64px);padding:clamp(22px,2.8vw,36px);border-radius:6px;background:var(--lino)}
@@ -249,7 +249,7 @@ h1,h2,h3,h4{font-family:var(--disp);font-weight:500;letter-spacing:-.025em;text-
 .firmado h3{font-size:clamp(26px,2.6vw,38px);line-height:1.05;letter-spacing:-.03em}
 .firmado p{margin-top:8px;color:var(--tinta-2)}
 @media (max-width:1000px){.comp .pasos{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (max-width:620px){.comp .pasos{grid-template-columns:minmax(0,1fr)}.comp .pasos canvas{width:100%}.firma .campos{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:620px){.comp .pasos{grid-template-columns:minmax(0,1fr)}.firma .campos{grid-template-columns:minmax(0,1fr)}}
 
 /* ---------- 8 · mecenas ---------- */
 .mec{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(24px,4vw,64px);align-items:start}
@@ -560,11 +560,12 @@ body.admin-bar .top{top:32px}@media (max-width:782px){body.admin-bar .top{top:46
   <!-- 9 · Manifiesto transfronterizo -->
   <section class="comp" id="manifiesto" data-tf-sec="manifiesto"><div class="sec in">
     <div class="sec-h"><h2 data-tf="tb9e1342531"><?php tf_t('tb9e1342531'); ?></h2></div>
+    <canvas class="flujo" id="flujo" aria-hidden="true"></canvas>
     <ol class="pasos" id="compLista">
-      <li><canvas aria-hidden="true"></canvas><h3 data-tf="td261170dcd"><?php tf_t('td261170dcd'); ?></h3><p data-tf="t5169535bd5"><?php tf_t('t5169535bd5'); ?></p></li>
-      <li><canvas aria-hidden="true"></canvas><h3 data-tf="tee6ad3ee3d"><?php tf_t('tee6ad3ee3d'); ?></h3><p data-tf="t664bc9d2bc"><?php tf_t('t664bc9d2bc'); ?></p></li>
-      <li><canvas aria-hidden="true"></canvas><h3 data-tf="t063752a9e4"><?php tf_t('t063752a9e4'); ?></h3><p data-tf="t4474ade354"><?php tf_t('t4474ade354'); ?></p></li>
-      <li><canvas aria-hidden="true"></canvas><h3 data-tf="t653ede66ef"><?php tf_t('t653ede66ef'); ?></h3><p data-tf="tc728d2e62a"><?php tf_t('tc728d2e62a'); ?></p></li>
+      <li><h3 data-tf="td261170dcd"><?php tf_t('td261170dcd'); ?></h3><p data-tf="t5169535bd5"><?php tf_t('t5169535bd5'); ?></p></li>
+      <li><h3 data-tf="tee6ad3ee3d"><?php tf_t('tee6ad3ee3d'); ?></h3><p data-tf="t664bc9d2bc"><?php tf_t('t664bc9d2bc'); ?></p></li>
+      <li><h3 data-tf="t063752a9e4"><?php tf_t('t063752a9e4'); ?></h3><p data-tf="t4474ade354"><?php tf_t('t4474ade354'); ?></p></li>
+      <li><h3 data-tf="t653ede66ef"><?php tf_t('t653ede66ef'); ?></h3><p data-tf="tc728d2e62a"><?php tf_t('tc728d2e62a'); ?></p></li>
     </ol>
     <form class="firma" id="firma" novalidate>
       <p class="ft" data-tf="t4253a33e70"><?php tf_t('t4253a33e70'); ?></p>
@@ -847,62 +848,57 @@ body.admin-bar .top{top:32px}@media (max-width:782px){body.admin-bar .top{top:46
     new IntersectionObserver(e => { enTarj = e[0].isIntersecting; pinta(); }, { threshold: .25 }).observe(document.querySelector('.tarjeta')); }
   $('#donar').addEventListener('click', () => { const A = anual(), D = deduce(A); abrePaso('mecenas', { aportacion: `${eur(cant)}${SUF[freq]}`, resumen: `Vas a donar <b>${eur(cant)}${SUF[freq]}</b>. ${logro(A)}${DESGRAVA ? `<br>Hacienda te devolverá <b>${eur(freq === 'mes' ? D / 12 : D)}${freq === 'mes' ? ' al mes' : ''}</b>, así que de verdad te cuesta <b>${eur(freq === 'mes' ? (A - D) / 12 : A - D)}${SUF[freq]}</b>.` : ''}` }); });
 
-  /* ===== 9 · manifiesto: cuatro dibujos que se leen en orden, de la diversidad al girasol; las pepitas nunca se quedan quietas ===== */
+  /* ===== 9 · manifiesto: una corriente de pepitas que entra por la izquierda, desordenada y sin color; se junta, coge color y desemboca en el girasol, que gira despacio. Se mueve sola, nunca con el scroll ===== */
   (() => {
-    const cvs = [...document.querySelectorAll('#compLista canvas')], N = 150, r0 = rng(137), lerp = (a, b, t) => a + (b - a) * t;
-    const ease = t => t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
-    const COL = ['#E2592A', '#F2B233', '#FC8A45', '#1F1B2D', '#9C97D6', '#5E8F4E', '#D9774F'];
-    const S = Array.from({ length: N }, (_, k) => ({ i: k + 1, x: .07 + r0() * .86, y: .07 + r0() * .86, a: r0() * TAU, c: COL[Math.floor(r0() * COL.length)], z: .7 + r0() * .7, dl: r0(), ph: r0() * TAU, w: .5 + r0() * .7 }));
-    const nueva = { i: N + 1, x: .12, y: .86, a: -.6, c: '#9C97D6', z: 1, dl: 0, ph: 1.3, w: .8 }, yo = { i: N + 1, x: 1.1, y: .5, a: 0, c: '#1F1B2D', z: 1, dl: 0, ph: .4, w: .7 };
-    let pYo = 0, T = 0, raf = 0, enVista = false;
-    /* dónde está cada pepita en cada fase: 0 dispersas, 1 se acercan, 2 dejan sitio en el centro, 3 girasol */
-    const sitio = (q, f, w) => {
-      const c = w * .4 / Math.sqrt(N + 2), ang = q.i * GA, d = c * Math.sqrt(q.i), t = Math.min(1, q.i / N), cx = w / 2;
-      const flor = [cx + Math.cos(ang) * d, cx + Math.sin(ang) * d, ang, mix('#FC8A45', '#FCD35A', Math.pow(t, .6)), c * (.56 + .16 * t)];
-      const suelta = [q.x * w, q.y * w, q.a, q.c, c * .62 * q.z];
-      if (f === 0) return suelta;
-      if (f === 1) { const u = .6 + .2 * q.dl; return [lerp(suelta[0], flor[0], u), lerp(suelta[1], flor[1], u), lerp(suelta[2], flor[2], u), mix(q.c, flor[3], .25), lerp(suelta[4], flor[4], .6)]; }
-      if (f === 2) { const h = c * Math.sqrt(22), dd = Math.sqrt(d * d + h * h) * .92; return [cx + Math.cos(ang) * dd, cx + Math.sin(ang) * dd, ang, mix(q.c, flor[3], .7), flor[4]]; }
-      return flor;
+    const cv = $('#flujo'); if (!cv) return;
+    const smooth = (a, b, t) => { const k = Math.min(1, Math.max(0, (t - a) / (b - a))); return k * k * (3 - 2 * k); };
+    const lerp = (a, b, t) => a + (b - a) * t, ease = t => t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+    const GRIS = ['#C9C0B0', '#B8AFA0', '#D4CCBD'];
+    let g, W, H, cx, cy, R, RAD = 6, flor, P = [], T = 0, raf = 0, enVista = false, yo = null, pun = null;
+    /* cada pepita se dibuja una vez, en gris y en color, y luego solo se mueve */
+    const sprite = (col, rad, sem) => { const s = Math.ceil(rad * 2.8), c = document.createElement('canvas'); c.width = c.height = Math.max(1, Math.ceil(s * DPR)); const x = c.getContext('2d'); x.setTransform(DPR, 0, 0, DPR, 0, 0); seedAt(x, s / 2, s / 2, rad, 0, col, rng(sem)); return { c, s }; };
+    const pon = (sp, x, y, a, al) => { if (al <= .01) return; g.save(); g.globalAlpha = al; g.translate(x, y); g.rotate(a); g.drawImage(sp.c, -sp.s / 2, -sp.s / 2, sp.s, sp.s); g.restore(); };
+    const nace = (q, dentro) => { q.x = dentro ? lerp(-W * .08, cx - R * .6, q.r()) : -W * (.03 + q.r() * .08); q.y0 = .06 + q.r() * .88; q.a0 = q.r() * TAU; q.sp = (.55 + q.r() * .9) * (q.r() < .5 ? -1 : 1); q.v = W / 17 * (.8 + q.r() * .45); q.ph = q.r() * TAU; q.fue = q.r() < .18; q.lado = q.r() < .5 ? -1 : 1; q.d = .3 + q.r() * .65; };
+    const prepara = () => {
+      [g, W, H] = setup(cv); if (!W) return;
+      const movil = W < 700; R = Math.min(H * (movil ? .36 : .42), W * (movil ? .26 : .2)); cx = W - Math.max(R * 1.2, W * (movil ? .2 : .14)); cy = H / 2;
+      /* el girasol: el logo, del fuego del centro al oro de fuera */
+      const NF = 150, c = R / Math.sqrt(NF + 4), s = Math.ceil(R * 2.3); flor = document.createElement('canvas'); flor.width = flor.height = Math.ceil(s * DPR); const f = flor.getContext('2d'); f.setTransform(DPR, 0, 0, DPR, 0, 0); const r = rng(7);
+      for (let i = 1; i <= NF; i++) { const t = i / NF, a = i * GA, d = c * Math.sqrt(i) * 1.05; seedAt(f, s / 2 + Math.cos(a) * d, s / 2 + Math.sin(a) * d, c * (.56 + .16 * t), a, mix('#E2592A', '#F2B233', Math.pow(t, .6)), r); }
+      flor.s = s;
+      const N = Math.max(60, Math.min(150, Math.round(W * H / 5200))), rad = RAD = Math.max(4.5, H * .02);
+      P = Array.from({ length: N }, (_, k) => { const r = rng(300 + k), z = .7 + r() * .6, q = { r, z }; q.gr = sprite(GRIS[k % 3], rad * z, 900 + k); q.co = sprite(mix('#E2592A', '#F2B233', r()), rad * z, 900 + k); nace(q, true); return q; });
+      if (yo) yo.sp = sprite('#1F1B2D', rad * 1.25, 77);
+      dibuja();
     };
-    /* cada pepita se dibuja una vez y luego solo se mueve */
-    const sprite = (v, q, col) => { const s = Math.ceil(v[4] * 2.6), c = document.createElement('canvas'); c.width = c.height = Math.max(1, Math.ceil(s * DPR)); const g = c.getContext('2d'); g.setTransform(DPR, 0, 0, DPR, 0, 0); seedAt(g, s / 2, s / 2, v[4], 0, col || v[3], rng(q.i * 31 + 7)); return { c, s, r: v[4] }; };
-    const pinta = (g, sp, x, y, a, r, al = 1) => { const k = r / sp.r, t = sp.s * k; g.save(); g.globalAlpha = al; g.translate(x, y); g.rotate(a); g.drawImage(sp.c, -t / 2, -t / 2, t, t); g.restore(); };
-    const est = cvs.map(() => ({ p: 0 })), L = cvs.map(() => ({}));
-    const prepara = f => {
-      const l = L[f]; [l.g, l.w] = setup(cvs[f]); const de = Math.max(0, f - 1);
-      l.q = S.map(q => { const B = sitio(q, f, l.w), A = f ? sitio(q, de, l.w) : [B[0] + Math.cos(q.ph) * l.w * .14, B[1] + Math.sin(q.ph) * l.w * .14, B[2] - 1.2, B[3], B[4]]; return { q, A, B, sA: f ? sprite(A, q) : null, sB: sprite(B, q) }; });
-      if (f === 2) { const v = sitio(nueva, 0, l.w); v[4] *= 1.1; l.nueva = { v, sp: sprite(v, nueva) }; }
-      if (f === 3) { const B = sitio(yo, 3, l.w); B[4] *= 1.15; l.yo = { B, sp: sprite(B, yo, '#1F1B2D') }; }
-    };
-    /* el vaivén: más suelto en la diversidad, casi quieto en el girasol, que gira muy despacio */
-    const vaiven = (q, f) => { const amp = [1.4, .9, .5, .25][f], k = T * q.w + q.ph; return [Math.sin(k) * amp, Math.cos(k * .8) * amp, Math.sin(k * .6) * .12 * amp]; };
-    const gira = (x, y, cx, a) => a ? [cx + (x - cx) * Math.cos(a) - (y - cx) * Math.sin(a), cx + (x - cx) * Math.sin(a) + (y - cx) * Math.cos(a)] : [x, y];
-    const dibuja = f => {
-      const l = L[f]; if (!l.q) return; const g = l.g, w = l.w, cx = w / 2, p = ease(est[f].p), giro = f === 3 ? T * .04 : f === 2 ? T * .015 : 0;
-      g.clearRect(0, 0, w, w);
-      for (const it of l.q) {
-        const { A, B, q } = it, m = vaiven(q, f), r = lerp(A[4], B[4], p);
-        const [x, y] = gira(lerp(A[0], B[0], p) + m[0] * r, lerp(A[1], B[1], p) + m[1] * r, cx, giro);
-        pinta(g, it.sA && p < .5 ? it.sA : it.sB, x, y, lerp(A[2], B[2], p) + m[2] + giro, r);
+    const dibuja = (dt = 0) => {
+      if (!g || !W) return; g.clearRect(0, 0, W, H); const giro = T * .05, fin = cx - R * .95;
+      for (const q of P) {
+        q.x += q.v * dt; const u = q.x / fin;
+        const dis = 1 - smooth(.22, .55, u), col = smooth(.5, .82, u), ll = smooth(.8, 1, u);
+        let y = lerp(cy + (q.y0 - .5) * H * .34, q.y0 * H, dis) + Math.sin(T * 1.1 + q.ph) * H * (.045 * dis + .008);
+        let a = lerp(Math.sin(T * .7 + q.ph) * .25, q.a0 + T * q.sp, dis), x = q.x, al = 1;
+        if (q.fue) { /* algunas rodean el girasol y siguen hasta salir */
+          const yb = cy + q.lado * (R * 1.12 + (q.y0 - .5) * R * .5); y = lerp(y, yb, ll); if (x > W + 30) nace(q);
+        } else if (ll > 0) { /* las demás desembocan en él y se funden */
+          const ang = Math.PI + (q.y0 - .5) * 2.2, tx = cx + Math.cos(ang) * R * q.d, ty = cy + Math.sin(ang) * R * q.d;
+          const k = smooth(fin - R * .3, cx - R * q.d * .6, x); x = lerp(x, tx, k * .7); y = lerp(y, ty, k); al = 1 - smooth(.55, 1, k); if (k >= .999) nace(q);
+        }
+        if (pun) { const dx = x - pun[0], dy = y - pun[1], d2 = dx * dx + dy * dy, rr = H * .16; if (d2 < rr * rr) { const d = Math.sqrt(d2) || 1, e = (1 - d / rr) * rr * .5; x += dx / d * e; y += dy / d * e; } }
+        pon(q.gr, x, y, a, al * (1 - col)); pon(q.co, x, y, a, al * col);
       }
-      if (l.nueva) { const v = l.nueva.v, m = vaiven(nueva, 1); pinta(g, l.nueva.sp, lerp(v[0], w * .22, p) + m[0] * v[4], lerp(v[1], w * .78, p) + m[1] * v[4], v[2] + m[2], v[4], p); }
-      if (l.yo && pYo > 0) {
-        const B = l.yo.B, u = ease(pYo), m = vaiven(yo, 3), [bx, by] = gira(B[0] + m[0] * B[4], B[1] + m[1] * B[4], cx, giro), x = lerp(w * 1.05, bx, u), y = lerp(w * .5, by, u);
-        pinta(g, l.yo.sp, x, y, B[2] + giro, B[4]); g.save(); g.globalAlpha = u; g.strokeStyle = '#E2592A'; g.lineWidth = 1.5; g.beginPath(); g.arc(x, y, B[4] * 2.1, 0, TAU); g.stroke(); g.restore();
+      g.save(); g.translate(cx, cy); g.rotate(giro); g.drawImage(flor, -flor.s / 2, -flor.s / 2, flor.s, flor.s); g.restore();
+      if (yo) { /* tu pepita: cruza la corriente y se queda en el borde del girasol */
+        const k = ease(Math.min(1, (T - yo.t0) / 4.5)), an = yo.an + giro, bx = cx + Math.cos(an) * R * .98, by = cy + Math.sin(an) * R * .98;
+        const x = lerp(-20, bx, k), y = lerp(cy + H * .3, by, k) - Math.sin(k * Math.PI) * H * .18;
+        pon(yo.sp, x, y, an, 1); g.save(); g.strokeStyle = '#E2592A'; g.lineWidth = 1.5; g.globalAlpha = k; g.beginPath(); g.arc(x, y, yo.sp.s * .45, 0, TAU); g.stroke(); g.restore();
       }
     };
-    cvs.forEach((cv, f) => vigila(cv, () => { prepara(f); dibuja(f); }));
-    cvs.forEach((cv, f) => { const otra = () => { if (reduce || est[f].va) return; est[f].va = true; est[f].p = 0; anima(f, 1400, k => { est[f].p = k; if (k >= 1) est[f].va = false; }); }; cv.style.cursor = 'pointer'; cv.addEventListener('pointerenter', e => { if (e.pointerType === 'mouse') otra(); }); cv.addEventListener('click', otra); });
-    const bucle = t => { T = t / 1000; cvs.forEach((_, f) => dibuja(f)); raf = enVista ? requestAnimationFrame(bucle) : 0; };
-    const anima = (f, D, fin) => { const t0 = performance.now(); const paso = t => { const k = Math.min(1, (t - t0) / D); fin(k); if (!raf) dibuja(f); if (k < 1) requestAnimationFrame(paso); }; requestAnimationFrame(paso); };
-    est[0].p = 1;
-    if (reduce) est.forEach(e => e.p = 1);
-    else {
-      new IntersectionObserver(es => { enVista = es[0].isIntersecting; if (enVista && !raf) raf = requestAnimationFrame(bucle); }, { rootMargin: '80px 0px' }).observe($('#compLista'));
-      const io = new IntersectionObserver(es => es.forEach(e => { if (!e.isIntersecting) return; io.unobserve(e.target); const f = cvs.indexOf(e.target), una = innerWidth > 1000; setTimeout(() => anima(f, 1500, k => est[f].p = k), una ? 150 + f * 260 : 120); }), { threshold: .6 });
-      cvs.slice(1).forEach(cv => io.observe(cv));
-    }
+    let t0 = 0; const bucle = t => { const dt = t0 ? Math.min(.05, (t - t0) / 1000) : 0; t0 = t; T += dt; dibuja(dt); raf = enVista ? requestAnimationFrame(bucle) : (t0 = 0); };
+    vigila(cv, prepara);
+    cv.addEventListener('pointermove', e => { const b = cv.getBoundingClientRect(); pun = [e.clientX - b.left, e.clientY - b.top]; if (reduce) dibuja(); });
+    cv.addEventListener('pointerleave', () => { pun = null; if (reduce) dibuja(); });
+    if (!reduce) new IntersectionObserver(es => { enVista = es[0].isIntersecting; if (enVista && !raf) raf = requestAnimationFrame(bucle); }, { rootMargin: '80px 0px' }).observe(cv);
   /* la firma: nombre y correo, y tu pepita entra en el girasol */
     const fm = $('#firma'), er = $('#firmaE');
     fm.addEventListener('submit', e => {
@@ -910,8 +906,8 @@ body.admin-bar .top{top:32px}@media (max-width:782px){body.admin-bar .top{top:46
       if (!n || !correoOk(c)) { er.textContent = 'Escribe tu nombre y un correo válido.'; return; }
       window.TF?.enviar?.('manifiesto', { nombre: n, correo: c, manifiesto: 'Firmado' });
       fm.hidden = true; $('#firmadoT').textContent = `Gracias, ${n}. Ya formas parte.`; $('#firmado').hidden = false;
-      est[3].p = 1; if (reduce) { pYo = 1; dibuja(3); } else anima(3, 1600, k => pYo = k);
-      const r = cvs[3].getBoundingClientRect(); if (r.bottom < 0 || r.top > innerHeight) cvs[3].scrollIntoView({ behavior: 'smooth', block: 'center' });
+      yo = { t0: reduce ? T - 9 : T, an: 2.4 - T * .05, sp: sprite('#1F1B2D', RAD * 1.25, 77) }; if (reduce) dibuja();
+      const r = cv.getBoundingClientRect(); if (r.bottom < 0 || r.top > innerHeight) cv.scrollIntoView({ behavior: 'smooth', block: 'center' });
     });
   })();
 
