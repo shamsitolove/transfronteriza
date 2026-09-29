@@ -115,10 +115,10 @@ h1,h2,h3,h4{font-family:var(--disp);font-weight:500;letter-spacing:-.025em;text-
 
 /* ---------- 5 · haz comunidad en tu ciudad (globo del revés) ---------- */
 .donde{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(24px,4vw,64px);align-items:center}
-#ciudad{--mar:#CDCFE6;position:relative;isolation:isolate;overflow:hidden;width:calc(100% - 2 * var(--gut));max-width:calc(var(--max) - 2 * var(--gut));margin:clamp(120px,14vw,220px) auto clamp(88px,10vw,150px);padding:clamp(40px,5vw,80px) clamp(24px,4.5vw,72px);border-radius:6px;background:var(--mar)}
+#ciudad{--mar:#CDCFE6;position:relative;isolation:isolate;overflow:hidden;max-width:none;min-height:88svh;margin:clamp(120px,14vw,220px) 0 clamp(88px,10vw,150px);padding:clamp(56px,7vw,110px) max(var(--gut),calc((100% - var(--max)) / 2 + var(--gut)));background:var(--mar)}
 #ciudad .sec-h{position:relative;z-index:1;margin-bottom:clamp(8px,1vw,16px)}
 #ciudad .donde{align-items:start}
-#ciudad .globo{z-index:0;max-width:none;width:128%;margin:-4% 0 -30% -16%;animation:deriva 28s ease-in-out infinite alternate}
+#ciudad .globo{z-index:0;max-width:none;width:140%;margin:-6% 0 -34% -26%;animation:deriva 28s ease-in-out infinite alternate}
 #ciudad .globo > img{filter:drop-shadow(0 40px 80px rgba(31,27,45,.2))}
 #ciudad .panel{position:relative;z-index:1;margin-top:clamp(0px,2vw,28px)}
 #ciudad .abre{position:relative;z-index:1}
