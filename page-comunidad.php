@@ -163,8 +163,8 @@ h1,h2,h3,h4{font-family:var(--disp);font-weight:500;letter-spacing:-.025em;text-
 .app{border-radius:14px;overflow:hidden;background:var(--papel);box-shadow:0 30px 70px rgba(31,27,45,.16);height:min(640px,78vh);display:flex;flex-direction:column}
 .app .cab{display:flex;align-items:center;gap:12px;padding:16px 20px;background:#fff;border-bottom:1px solid var(--linea)}
 .app .cab .marca{display:flex;align-items:center;gap:8px;font:500 16px/1 var(--disp);letter-spacing:-.02em;color:var(--tinta)}
-.app .cab .marca img{height:20px;width:20px}
-.fron .fsim{display:block;width:clamp(44px,4.4vw,68px);height:auto;margin-bottom:clamp(14px,1.6vw,22px)}
+.app .cab .marca svg{height:24px;width:24px;overflow:visible}
+.fron .fsim{display:block;width:clamp(48px,4.8vw,72px);height:auto;overflow:visible;color:var(--tinta);margin-bottom:clamp(14px,1.6vw,22px)}
 .app .cab .vol{display:none;font-size:15px;color:var(--tinta-2)}
 .app.hilo .cab .vol{display:inline-flex}
 .app.hilo .cab .marca{display:none}
@@ -509,14 +509,14 @@ body.admin-bar .top{top:32px}@media (max-width:782px){body.admin-bar .top{top:46
   <section class="sec in" id="frontera" style="padding-top:0" data-tf-sec="frontera">
     <div class="fron">
       <div>
-        <img class="fsim" src="<?php tf_img('i2e517cfb87', TF_U . '/logo/frontera.svg'); ?>" data-tf-img="i2e517cfb87" alt="" aria-hidden="true">
+        <svg class="fsim" viewBox="0 0 48 48" aria-hidden="true"><path d="M9 8.5h16.5a6 6 0 0 1 6 6v7.5a6 6 0 0 1-6 6H17l-6.5 5.5V28H9a6 6 0 0 1-6-6v-7.5a6 6 0 0 1 6-6z" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linejoin="round"/><path d="M23 19h16a6 6 0 0 1 6 6v7a6 6 0 0 1-6 6h-1.5v5.5L31 38h-8a6 6 0 0 1-6-6v-7a6 6 0 0 1 6-6z" fill="#E2592A"/><circle cx="41" cy="9" r="4.2" fill="#F2B233"/></svg>
         <h2 data-tf="t4d20f5ee80"><?php tf_t('t4d20f5ee80'); ?></h2>
         <div class="frases"><p data-tf="tb39ee0fd33"><?php tf_t('tb39ee0fd33'); ?></p><p data-tf="t87765b2a56"><?php tf_t('t87765b2a56'); ?></p><p data-tf="t0871782f28"><?php tf_t('t0871782f28'); ?></p></div>
         <p class="desc" data-tf="t657d9dca65"><?php tf_t('t657d9dca65'); ?></p>
         <div class="acts"><a class="btn p" href="#" data-entrar data-tf="t93b479b511"><?php tf_t('t93b479b511'); ?></a></div>
       </div>
       <div class="app" id="app">
-        <div class="cab"><span class="marca"><img src="<?php tf_img('i2e517cfb87', TF_U . '/logo/frontera.svg'); ?>" data-tf-img="i2e517cfb87" alt="">La Frontera</span><button class="vol" type="button" id="volver">← Hilos</button><span class="anon">Anónima<button class="toggle" type="button" role="switch" aria-checked="true" id="anon" aria-label="Escribir de forma anónima"></button></span></div>
+        <div class="cab"><span class="marca"><svg class="xf" viewBox="0 0 48 48" aria-hidden="true"><path d="M9 8.5h16.5a6 6 0 0 1 6 6v7.5a6 6 0 0 1-6 6H17l-6.5 5.5V28H9a6 6 0 0 1-6-6v-7.5a6 6 0 0 1 6-6z" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linejoin="round"/><path d="M23 19h16a6 6 0 0 1 6 6v7a6 6 0 0 1-6 6h-1.5v5.5L31 38h-8a6 6 0 0 1-6-6v-7a6 6 0 0 1 6-6z" fill="#E2592A"/><circle cx="41" cy="9" r="4.2" fill="#F2B233"/></svg>La Frontera</span><button class="vol" type="button" id="volver">← Hilos</button><span class="anon">Anónima<button class="toggle" type="button" role="switch" aria-checked="true" id="anon" aria-label="Escribir de forma anónima"></button></span></div>
         <div class="cuerpo" id="appCuerpo"></div>
         <form class="escribe" id="escribe" hidden><textarea id="texto" rows="1" placeholder="Escribe tu respuesta…" aria-label="Tu respuesta"></textarea><button class="btn g" type="submit" data-tf="t61b0418ae4"><?php tf_t('t61b0418ae4'); ?></button></form>
       </div>
