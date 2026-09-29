@@ -40,7 +40,7 @@ h1,h2,h3,h4{font-family:var(--disp);font-weight:500;letter-spacing:-.025em;text-
 .sec-h p{margin-top:16px;color:var(--tinta-2);font-size:clamp(17px,1.35vw,20px);max-width:44ch}
 
 /* ---------- cabecera: la línea aparece al bajar ---------- */
-.top{position:fixed;inset:0 0 auto 0;z-index:30;height:var(--hh);background:rgba(242,216,198,.9);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid transparent;transition:border-color .3s}
+.top{position:fixed;inset:0 0 auto 0;z-index:30;height:var(--hh);background:rgba(236,228,211,.9);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid transparent;transition:border-color .3s}
 .top.baja{border-bottom-color:var(--linea)}
 .top .row{height:100%;display:flex;align-items:center;gap:28px;padding-inline:var(--gut)}
 .top .logo img{height:24px;width:auto}
@@ -115,7 +115,7 @@ h1,h2,h3,h4{font-family:var(--disp);font-weight:500;letter-spacing:-.025em;text-
 
 /* ---------- 5 · haz comunidad en tu ciudad (globo del revés) ---------- */
 .donde{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(24px,4vw,64px);align-items:center}
-#ciudad{--mar:#CDCFE6;position:relative;isolation:isolate;overflow:hidden;width:calc(100% - 2 * var(--gut));max-width:calc(var(--max) - 2 * var(--gut));margin:clamp(120px,14vw,220px) auto 0;padding:clamp(40px,5vw,80px) clamp(24px,4.5vw,72px);border-radius:6px;background:var(--mar)}
+#ciudad{--mar:#CDCFE6;position:relative;isolation:isolate;overflow:hidden;width:calc(100% - 2 * var(--gut));max-width:calc(var(--max) - 2 * var(--gut));margin:clamp(120px,14vw,220px) auto clamp(88px,10vw,150px);padding:clamp(40px,5vw,80px) clamp(24px,4.5vw,72px);border-radius:6px;background:var(--mar)}
 #ciudad .sec-h{position:relative;z-index:1;margin-bottom:clamp(8px,1vw,16px)}
 #ciudad .donde{align-items:start}
 #ciudad .globo{z-index:0;max-width:none;width:128%;margin:-4% 0 -30% -16%;animation:deriva 28s ease-in-out infinite alternate}
