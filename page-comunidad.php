@@ -120,7 +120,7 @@ h1,h2,h3,h4{font-family:var(--disp);font-weight:500;letter-spacing:-.025em;text-
 #ciudad::before{content:"";position:absolute;inset:0;z-index:0;background:radial-gradient(90% 70% at 70% 20%,rgba(245,238,223,.55),rgba(245,238,223,0) 60%),var(--grano);background-size:auto,200px;pointer-events:none}
 #ciudad .sec-h{position:relative;z-index:1;margin-bottom:clamp(8px,1vw,16px)}
 #ciudad .donde{align-items:start;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr)}
-#ciudad .globo{z-index:0;max-width:none;width:128%;margin:-3% 0 -24% -20%;animation:deriva 28s ease-in-out infinite alternate}
+#ciudad .globo{z-index:0;max-width:none;width:128%;margin:3% 0 -24% -20%;animation:deriva 28s ease-in-out infinite alternate}
 #ciudad .panel{margin-top:clamp(8px,3vw,40px)}
 #ciudad .globo > .mar{box-shadow:0 40px 90px rgba(31,27,45,.4)}
 #ciudad .panel{position:relative;z-index:1;margin-top:clamp(0px,2vw,28px)}
