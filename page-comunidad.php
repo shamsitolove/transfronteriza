@@ -13,6 +13,7 @@
   --oro:#F2B233;--fuego:#E2592A;
   --disp:"Funnel Display","Host Grotesk",system-ui,sans-serif;--text:"Host Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;
   --gut:clamp(16px,4vw,56px);--max:1280px;--hh:76px;--ease:cubic-bezier(.2,.7,.2,1);
+  --grano:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .5  0 0 0 0 .45  0 0 0 0 .4  0 0 0 .55 0'/></filter><rect width='200' height='200' filter='url(%23n)'/></svg>");
 }
 *{box-sizing:border-box}
 [id]{scroll-margin-top:calc(var(--hh) + 20px)}
@@ -115,18 +116,21 @@ h1,h2,h3,h4{font-family:var(--disp);font-weight:500;letter-spacing:-.025em;text-
 
 /* ---------- 5 · haz comunidad en tu ciudad (globo del revés) ---------- */
 .donde{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(24px,4vw,64px);align-items:center}
-#ciudad{--mar:#CDCFE6;position:relative;isolation:isolate;overflow:hidden;max-width:none;min-height:88svh;margin:clamp(40px,5vw,80px) 0 clamp(88px,10vw,150px);padding:clamp(48px,5.5vw,88px) max(var(--gut),calc((100% - var(--max)) / 2 + var(--gut)));background:var(--mar)}
+#ciudad{position:relative;isolation:isolate;overflow:hidden;max-width:none;min-height:88svh;margin:clamp(40px,5vw,80px) 0 clamp(88px,10vw,150px);padding:clamp(48px,5.5vw,88px) max(var(--gut),calc((100% - var(--max)) / 2 + var(--gut)));background:var(--teja)}
+#ciudad::before{content:"";position:absolute;inset:0;z-index:0;background:radial-gradient(90% 70% at 70% 20%,rgba(245,238,223,.55),rgba(245,238,223,0) 60%),var(--grano);background-size:auto,200px;pointer-events:none}
 #ciudad .sec-h{position:relative;z-index:1;margin-bottom:clamp(8px,1vw,16px)}
 #ciudad .donde{align-items:start}
-#ciudad .globo{z-index:0;max-width:none;width:140%;margin:-6% 0 -34% -26%;animation:deriva 28s ease-in-out infinite alternate}
-#ciudad .globo > img{filter:drop-shadow(0 40px 80px rgba(31,27,45,.2))}
+#ciudad .globo{z-index:0;max-width:none;width:140%;margin:2% 0 -34% -26%;animation:deriva 28s ease-in-out infinite alternate}
+#ciudad .globo > .mar{box-shadow:0 40px 90px rgba(31,27,45,.4)}
 #ciudad .panel{position:relative;z-index:1;margin-top:clamp(0px,2vw,28px)}
 #ciudad .abre,#ciudad .ciuM{position:relative;z-index:1}
+#ciudad .abre{box-shadow:0 30px 60px rgba(31,27,45,.25)}
 @keyframes deriva{from{transform:translate(0,0) rotate(0deg)}to{transform:translate(2.5%,-1.5%) rotate(3deg)}}
 @media (max-width:1000px){#ciudad .globo{width:124%;margin:0 -12% -26%}}
 .globo{position:relative;aspect-ratio:1/1;max-width:640px;width:100%;justify-self:center}
-.globo > img{position:absolute;inset:0;width:100%;height:100%;filter:drop-shadow(0 30px 50px rgba(31,27,45,.16))}
-.pun{position:absolute;translate:-50% -50%;font-size:13.5px;color:var(--tinta-2);white-space:nowrap}
+.globo > img,.globo > .mar{position:absolute;inset:0;width:100%;height:100%}
+.globo > .mar{border-radius:50%;box-shadow:0 30px 50px rgba(31,27,45,.2)}
+.pun{position:absolute;translate:-50% -50%;font-size:13.5px;color:var(--tinta);white-space:nowrap;text-shadow:0 0 3px var(--papel),0 0 3px var(--papel),0 0 6px var(--papel),0 1px 0 var(--papel)}
 .pun canvas{display:block;width:24px;height:24px;transition:transform .5s var(--ease)}
 .pun.sede canvas{width:32px;height:32px}
 .pun span{position:absolute;top:50%;left:calc(100% + 5px);translate:0 -50%}
@@ -234,7 +238,8 @@ h1,h2,h3,h4{font-family:var(--disp);font-weight:500;letter-spacing:-.025em;text-
 /* ---------- 9 · manifiesto ---------- */
 .comp{background:var(--papel)}
 .comp .pasos{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(18px,2.4vw,36px)}
-.comp .flujo{display:block;width:100vw;margin:clamp(4px,1vw,16px) 0 clamp(28px,3.4vw,52px) calc(50% - 50vw);height:clamp(300px,36vw,540px);cursor:default;touch-action:pan-y}
+.comp .flujo{display:block;width:100%;margin:clamp(0px,.6vw,8px) 0 clamp(14px,1.8vw,26px);height:clamp(150px,17vw,250px);cursor:default;touch-action:pan-y}
+.comp .pasos li{padding-top:18px;border-top:1px solid var(--linea)}
 .comp .pasos h3{font-size:clamp(24px,2.2vw,34px);line-height:1.02;letter-spacing:-.03em}
 .comp .pasos p{margin-top:12px;color:var(--tinta-2);font-size:16px;line-height:1.55}
 .comp .pasos li:last-child h3{color:var(--fuego)}
@@ -499,7 +504,7 @@ body.admin-bar .top{top:32px}@media (max-width:782px){body.admin-bar .top{top:46
   <section class="sec in" id="ciudad" data-tf-sec="ciudad" data-tf-panel="edit.php?post_type=tf_ciudad" data-tf-panel-t="Editar las ciudades">
     <div class="sec-h"><h2 data-tf="t1ea3373dcc"><?php tf_t('t1ea3373dcc'); ?></h2></div>
     <div class="donde">
-      <div class="globo" id="mapa"><img src="<?php tf_img('ie346a3a2be', TF_U . '/img/globo.svg'); ?>" data-tf-img="ie346a3a2be" alt="Globo terráqueo del revés, con España y el norte de Marruecos a los dos lados del Estrecho."></div>
+      <div class="globo" id="mapa"><canvas class="mar" id="mar" aria-hidden="true"></canvas><img src="<?php tf_img('ie346a3a2be', TF_U . '/img/globo.svg'); ?>" data-tf-img="ie346a3a2be" alt="Globo terráqueo del revés, con España y el norte de Marruecos a los dos lados del Estrecho."></div>
       <div class="panel" id="panel" aria-live="polite"></div>
     </div>
     <div class="abre"><div><h3 data-tf="te076ee9ab2"><?php tf_t('te076ee9ab2'); ?></h3><p data-tf="t7174103a32"><?php tf_t('t7174103a32'); ?></p></div><button class="btn g" type="button" data-flujo="abrir" data-tf="t03f61a4195"><?php tf_t('t03f61a4195'); ?></button></div>
@@ -759,6 +764,52 @@ body.admin-bar .top{top:32px}@media (max-width:782px){body.admin-bar .top{top:46
 
   /* ===== 5 · el globo del revés, con la gente de cada ciudad ===== */
   const CIU = TF.ciudades || {};
+  /* el mar: el zellige añil de la marca (espiga de azulejo esmaltado, junta de cal) y la luz que lo cruza despacio */
+  const ANIL = ['#2F4FA8', '#294796', '#3657B3', '#223D85', '#3B5FBE', '#2B4A9F', '#4A6BC2', '#1E377A', '#3252AC', '#5575C6'];
+  const zellige = (g, x0, y0, w, h, r, s, pal = ANIL, grout = '#E4DDCD') => {
+    g.save(); g.fillStyle = grout; g.fillRect(x0, y0, w, h);
+    const cw = s * 1.6, sp = s * .62, gap = Math.max(.8, s * .07);
+    for (let k = 0, x = x0 - cw; x < x0 + w + cw; x += cw, k++) {
+      const d = k % 2 ? 1 : -1, rise = d * cw * .55;
+      for (let y = y0 - cw * 1.2; y < y0 + h + cw; y += sp) {
+        const j = () => (r() - .5) * gap * .9, p = new Path2D();
+        p.moveTo(x + gap / 2 + j(), y + gap / 2 + j()); p.lineTo(x + cw - gap / 2 + j(), y + rise + gap / 2 + j());
+        p.lineTo(x + cw - gap / 2 + j(), y + rise + sp - gap / 2 + j()); p.lineTo(x + gap / 2 + j(), y + sp - gap / 2 + j()); p.closePath();
+        g.fillStyle = pal[(r() * pal.length) | 0]; g.fill(p);
+        const gr = g.createLinearGradient(x, y, x + cw, y + sp + rise);
+        gr.addColorStop(0, 'rgba(255,255,255,' + (.1 + r() * .12) + ')'); gr.addColorStop(.45, 'rgba(255,255,255,0)'); gr.addColorStop(1, 'rgba(0,0,30,' + (.08 + r() * .1) + ')');
+        g.fillStyle = gr; g.fill(p);
+        if (r() < .35) { g.save(); g.clip(p); g.fillStyle = 'rgba(255,255,255,.18)'; g.beginPath(); g.ellipse(x + cw * (.2 + r() * .5), y + sp * .35 + rise * .4, cw * .18, sp * .12, Math.atan2(rise, cw), 0, TAU); g.fill(); g.restore(); }
+      }
+    }
+    g.restore();
+  };
+  (() => {
+    const cv = $('#mar'); if (!cv) return;
+    let g, W, H, base, T = 0, raf = 0, t0 = 0, enVista = false;
+    const disco = x => { x.beginPath(); x.arc(W / 2, H / 2, W * .496, 0, TAU); x.clip(); };
+    const luz = (ang, ancho, alfa, t) => { /* una franja de luz que cruza el disco en diagonal */
+      g.save(); g.translate(W / 2, H / 2); g.rotate(ang); const x = (t % 1) * W * 2.6 - W * 1.3;
+      const gr = g.createLinearGradient(x - ancho, 0, x + ancho, 0); gr.addColorStop(0, 'rgba(255,255,255,0)'); gr.addColorStop(.5, 'rgba(255,255,255,' + alfa + ')'); gr.addColorStop(1, 'rgba(255,255,255,0)');
+      g.fillStyle = gr; g.fillRect(x - ancho, -W, ancho * 2, W * 2); g.restore();
+    };
+    const dibuja = () => {
+      if (!g || !W) return; g.clearRect(0, 0, W, H); g.drawImage(base, 0, 0, W, H);
+      if (reduce) return;
+      g.save(); disco(g); g.globalCompositeOperation = 'screen';
+      luz(.5, W * .22, .2, T / 21); luz(-.35, W * .1, .12, T / 13 + .4);
+      g.restore();
+    };
+    const prepara = () => {
+      [g, W, H] = setup(cv); if (!W) return;
+      base = document.createElement('canvas'); base.width = cv.width; base.height = cv.height; const b = base.getContext('2d'); b.setTransform(DPR, 0, 0, DPR, 0, 0);
+      b.save(); b.beginPath(); b.arc(W / 2, H / 2, W * .496, 0, TAU); b.clip(); zellige(b, 0, 0, W, H, rng(11), Math.max(15, W / 19)); b.restore();
+      dibuja();
+    };
+    const bucle = t => { if (t - t0 > 40) { T += Math.min(.1, (t - t0) / 1000); t0 = t; dibuja(); } raf = enVista ? requestAnimationFrame(bucle) : 0; };
+    vigila(cv, prepara);
+    if (!reduce) new IntersectionObserver(es => { enVista = es[0].isIntersecting; if (enVista && !raf) { t0 = performance.now(); raf = requestAnimationFrame(bucle); } }, { rootMargin: '80px 0px' }).observe(cv);
+  })();
   const mapa = $('#mapa'), panel = $('#panel');
   Object.entries(CIU).forEach(([k, c], i) => { const b = document.createElement('button'); b.type = 'button'; b.className = 'pun' + (c.sede ? ' sede' : '') + (c.izq ? ' izq' : '') + (c.arr ? ' arr' : ''); b.style.left = c.x + '%'; b.style.top = c.y + '%'; b.dataset.c = k; b.setAttribute('aria-pressed', 'false'); b.innerHTML = `<canvas aria-hidden="true"></canvas><span>${c.n}</span>`; mapa.appendChild(b); pep(b.querySelector('canvas'), i + 3); });
   const elige = k => { const c = CIU[k]; mapa.querySelectorAll('.pun').forEach(p => p.setAttribute('aria-pressed', p.dataset.c === k)); document.querySelectorAll('.ciuM button').forEach(p => p.setAttribute('aria-pressed', p.dataset.c === k)); panel.innerHTML = `<div${EI(c.id, 'tf_ciudad')}><figure class="pf"${EF(c.id)}><img src="${c.foto}" alt="Gente de la comunidad de ${c.n}."></figure><div class="pt"><h3${ED(c.id, 'titulo')}>${c.n}</h3><p class="txt"${ED(c.id, 'texto')}>${c.txt}</p><button class="btn p" type="button" data-flujo="ciudad" data-ciudad="${c.n}" data-foto="${c.foto}">Haz comunidad en ${c.n}</button></div></div>`; };
@@ -861,12 +912,13 @@ body.admin-bar .top{top:32px}@media (max-width:782px){body.admin-bar .top{top:46
     const nace = (q, dentro) => { q.x = dentro ? lerp(-W * .08, cx - R * .6, q.r()) : -W * (.03 + q.r() * .08); q.y0 = .06 + q.r() * .88; q.a0 = q.r() * TAU; q.sp = (.55 + q.r() * .9) * (q.r() < .5 ? -1 : 1); q.v = W / 17 * (.8 + q.r() * .45); q.ph = q.r() * TAU; q.fue = q.r() < .18; q.lado = q.r() < .5 ? -1 : 1; q.d = .3 + q.r() * .65; };
     const prepara = () => {
       [g, W, H] = setup(cv); if (!W) return;
-      const movil = W < 700; R = Math.min(H * (movil ? .36 : .42), W * (movil ? .26 : .2)); cx = W - Math.max(R * 1.2, W * (movil ? .2 : .14)); cy = H / 2;
+      const ult = document.querySelector('#compLista li:last-child'), bc = cv.getBoundingClientRect(), bu = ult && ult.getBoundingClientRect(), cu = bu ? bu.left + bu.width / 2 - bc.left : 0;
+      R = Math.min(H * .44, W * .11); cx = cu > W * .6 ? cu : W - R * 1.25; cy = H / 2;
       /* el girasol: el logo, del fuego del centro al oro de fuera */
       const NF = 150, c = R / Math.sqrt(NF + 4), s = Math.ceil(R * 2.3); flor = document.createElement('canvas'); flor.width = flor.height = Math.ceil(s * DPR); const f = flor.getContext('2d'); f.setTransform(DPR, 0, 0, DPR, 0, 0); const r = rng(7);
       for (let i = 1; i <= NF; i++) { const t = i / NF, a = i * GA, d = c * Math.sqrt(i) * 1.05; seedAt(f, s / 2 + Math.cos(a) * d, s / 2 + Math.sin(a) * d, c * (.56 + .16 * t), a, mix('#E2592A', '#F2B233', Math.pow(t, .6)), r); }
       flor.s = s;
-      const N = Math.max(60, Math.min(150, Math.round(W * H / 5200))), rad = RAD = Math.max(4.5, H * .02);
+      const N = Math.max(70, Math.min(150, Math.round(W * H / 3400))), rad = RAD = Math.max(4.5, H * .027);
       P = Array.from({ length: N }, (_, k) => { const r = rng(300 + k), z = .7 + r() * .6, q = { r, z }; q.gr = sprite(GRIS[k % 3], rad * z, 900 + k); q.co = sprite(mix('#E2592A', '#F2B233', r()), rad * z, 900 + k); nace(q, true); return q; });
       if (yo) yo.sp = sprite('#1F1B2D', rad * 1.25, 77);
       dibuja();
@@ -875,8 +927,9 @@ body.admin-bar .top{top:32px}@media (max-width:782px){body.admin-bar .top{top:46
       if (!g || !W) return; g.clearRect(0, 0, W, H); const giro = T * .05, fin = cx - R * .95;
       for (const q of P) {
         q.x += q.v * dt; const u = q.x / fin;
-        const dis = 1 - smooth(.22, .55, u), col = smooth(.5, .82, u), ll = smooth(.8, 1, u);
-        let y = lerp(cy + (q.y0 - .5) * H * .34, q.y0 * H, dis) + Math.sin(T * 1.1 + q.ph) * H * (.045 * dis + .008);
+        /* cuatro etapas, una por columna: dispersas y grises · se juntan · se ordenan y se inclinan · florecen */
+        const dis = 1 - smooth(.2, .5, u), col = smooth(.44, .74, u), ll = smooth(.8, 1, u), hum = smooth(.5, .72, u) * (1 - smooth(.74, .9, u));
+        let y = lerp(cy + (q.y0 - .5) * H * lerp(.4, .24, hum), q.y0 * H, dis) + Math.sin(T * 1.1 + q.ph) * H * (.045 * dis + .008) + hum * H * .07;
         let a = lerp(Math.sin(T * .7 + q.ph) * .25, q.a0 + T * q.sp, dis), x = q.x, al = 1;
         if (q.fue) { /* algunas rodean el girasol y siguen hasta salir */
           const yb = cy + q.lado * (R * 1.12 + (q.y0 - .5) * R * .5); y = lerp(y, yb, ll); if (x > W + 30) nace(q);
