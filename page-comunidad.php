@@ -803,7 +803,7 @@ body.admin-bar .top{top:32px}@media (max-width:782px){body.admin-bar .top{top:46
     const prepara = () => {
       [g, W, H] = setup(cv); if (!W) return;
       base = document.createElement('canvas'); base.width = cv.width; base.height = cv.height; const b = base.getContext('2d'); b.setTransform(DPR, 0, 0, DPR, 0, 0);
-      b.save(); b.beginPath(); b.arc(W / 2, H / 2, W * .496, 0, TAU); b.clip(); zellige(b, 0, 0, W, H, rng(11), Math.max(15, W / 19)); b.restore();
+      b.save(); b.beginPath(); b.arc(W / 2, H / 2, W * .496, 0, TAU); b.clip(); zellige(b, 0, 0, W, H, rng(11), Math.max(9, W / 36)); b.restore();
       dibuja();
     };
     const bucle = t => { if (t - t0 > 40) { T += Math.min(.1, (t - t0) / 1000); t0 = t; dibuja(); } raf = enVista ? requestAnimationFrame(bucle) : 0; };
